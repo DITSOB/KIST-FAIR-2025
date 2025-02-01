@@ -1,0 +1,110 @@
+*{
+    /* fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-size: 18px;
+    font-style: normal;
+      
+
+    /* initializing variables */
+
+    --primary-color : #ffffff;
+    --button-color : #201e1e;
+    --border-color: #74c914;
+    --hover-color: #1B03A3;
+
+    /* default margin and padding */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* to cover entire screen */
+    min-height: 100vh;
+
+    /* background image for the landing page */
+    /* background-image: url('/img/background-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+}
+
+nav{
+    background-color: var(--primary-color);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav ul li{
+    height: 50px;
+}
+
+nav ul li a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--button-color);
+}
+
+nav ul li a:hover{
+    color: var(--hover-color);
+}
+
+nav ul li:first-child{
+    margin-right: auto;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 200px;
+    z-index: 999;
+    background-color:rgba(236, 233, 233, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menu-button{
+    display: none;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+@media(max-width: 800px){
+    .hideOnMobile{
+        display: none;
+    }
+
+    .menu-button{
+        display: block;
+    }
+}
+
+@media(max-width: 400px){
+    .sidebar{
+        width: 100%;
+    }
+}
