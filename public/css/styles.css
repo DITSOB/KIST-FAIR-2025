@@ -84,6 +84,20 @@ nav ul li:first-child{
     color: white;
 }
 
+#signin{
+    border: 1px solid blue;
+    
+    color: black;
+    border-radius: 12px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+#signin:hover{
+    background: #1DA1F2;
+    color: white;
+}
+
 .sidebar{
     position: fixed;
     top: 0;
@@ -119,6 +133,10 @@ nav ul li:first-child{
 
     .menu-button{
         display: block;
+    }
+
+    #signup-box{
+        height: 100vh;
     }
 }
 

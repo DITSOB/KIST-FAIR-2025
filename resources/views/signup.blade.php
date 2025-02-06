@@ -13,7 +13,7 @@
     @endif
 </div>
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div id="signup-box" style="display: flex; justify-content: center; align-items: center;">
   <form method="POST" action="{{ route('signup'); }}" style="width: 500px; height: 650px; padding-top: 30px;">
     <h1>Sign Up</h1><br>
     @csrf

@@ -12,6 +12,10 @@ class HomeController extends Controller
     public function index(){
         return view('index');
     }
+    
+    public function about(){
+        return view('about');
+    }
 
     public function showBlogs(){
         $blogs = Blog::all();
@@ -66,6 +70,7 @@ class HomeController extends Controller
     }
 
     public function adminDashboard(){
-        return view('admin-dashboard');
+        $blogs = Blog::orderby('updated_at', 'desc')->get();
+        return view('admin-dashboard', compact('blogs'));
     }
 }

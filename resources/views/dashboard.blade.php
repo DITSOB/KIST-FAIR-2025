@@ -68,7 +68,7 @@
                 <!-- <p class="card-text">{!! nl2br(e($blog->description)) !!}</p> -->
             </div>
             <div style="display: flex; justify-content: flex-start;">
-            <button type="button" class="btn btn-success" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Edit <i class="bi bi-pencil-fill"></i></button>
+                <button type="button" class="btn btn-success" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Edit <i class="bi bi-pencil-fill"></i></button>
                 <button type="button" class="btn btn-danger" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Delete <i class="bi bi-trash-fill"></i></button>
             </div>
         </div>

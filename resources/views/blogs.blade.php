@@ -21,6 +21,7 @@
                 <h4><a style="font-size: 34px;" href="{{ route('single_recipe', $blog->id); }}">{{ $blog->title }}</a></h4>
                 <p class="card-text"><small class="text-muted"><i class="bi bi-person"></i>{{ $blog->author }}</small></p>
                 <p class="card-text"><small class="text-muted"><i class="bi bi-clock"></i>Last updated {{ $blog->updated_at->diffForHumans(); }}</small></p>
+                <a href="{{ route('single_recipe', $blog->id); }}" class="btn btn-success" style="color: white; text-decoration: none;">Visit Blog</a>
             </div>
         </div>
     </div>

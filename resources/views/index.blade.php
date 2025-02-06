@@ -45,14 +45,14 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-        <img src="{{ asset('img/TastyCover1.jpg'); }}" alt="...">
+        <img src="{{ asset('img/TastyCover1.jpg'); }}" alt="..." class="d-block img-fluid">
         <div class="carousel-caption d-none d-md-block">
             <h5 style="font-size: 40px; background: rgba(0, 0, 0, 0.5);">"Savor the Flavors - Discover, Cook, Enjoy!"🍽️✨</h5>
             <a href="" class="btn btn-success" style="color: white; text-decoration: none;">Get Started</a>
         </div>
     </div>
     <div class="carousel-item">
-        <img src="{{ asset('img/TastyCover2.jpg'); }}" alt="...">
+        <img src="{{ asset('img/TastyCover2.jpg'); }}" alt="..." class="d-block img-fluid">
         <div class="carousel-caption d-none d-md-block">
             <h5 style="font-size: 40px; background: rgba(0, 0, 0, 0.5);">"Embark on a culinary adventure - discover, create, and savor new flavors with every click!"🍽️✨</h5>
             <a href="" class="btn btn-info">Explore <i class="bi bi-search"></i></a>
