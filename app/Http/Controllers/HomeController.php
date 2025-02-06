@@ -80,13 +80,24 @@ class HomeController extends Controller
         return view('edit', compact('blogs'));
     }
 
+    public function editAdmin(Request $request, $id){
+        $blogs = Blog::find($id);
+        return view('edit-admin', compact('blogs'));
+    }
+
     public function update(Request $request, $id){
-        $blog = new Blog();
+
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $blog = Blog::find($id);
 
         $blog->author = Auth::user()->name;
         $blog->author_id = Auth::user()->id;
-        $blog->title = $request->title;
-        $blog->description = $request->description;
+        $blog->title = $request->input('title');
+        $blog->description = $request->input('description');
         $blog->category = $request->category;
 
         $file = $request->file('image');
@@ -100,19 +111,63 @@ class HomeController extends Controller
         try{
             $blog->update();
             $blogs = Blog::orderby('updated_at', 'desc')->get();
-            if($blog->role === 'user'){
-                return view('dashboard', compact('blogs'));
+            if(Auth::user()->role === 'user'){
+                session()->flash('success', 'Successfully Updated');
+                return redirect()->route('dashboard', compact('blogs'));
             }else{
-                return view('admin-dashboard', compact('blogs'));
+                session()->flash('success', 'Successfully Updated');
+                return redirect()->route('admin-dashboard', compact('blogs'));
             }
         } catch(Exception $e){
             $blogs = Blog::orderby('updated_at', 'desc')->get();
-            if($blog->role === 'user'){
-                session()->flash('error', 'Invalid Credentials');
-                return view('dashboard', compact('blogs'));
+            if(Auth::user()->role === 'user'){
+                return redirect()->route('dashboard', compact('blogs'))->withErrors(['errors', 'Could Not Update']);
             }else{
-                session()->flash('error', 'Invalid Credentials');
-                return view('admin-dashboard', compact('blogs'));
+                return redirect()->route('admin-dashboard', compact('blogs'))->withErrors(['errors', 'Could Not Update']);
+            }
+        }
+    }
+
+    public function updateAdmin(Request $request, $id){
+
+        $request->validate([
+            'author' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $blog = Blog::find($id);
+
+        $blog->author = $request->input('author');
+        $blog->author_id = $request->input('author_id');
+        $blog->title = $request->input('title');
+        $blog->description = $request->input('description');
+        $blog->category = $request->category;
+
+        $file = $request->file('image');
+        $folder_to_save = public_path('img');
+        // dd($request->file('image'));
+        $file_name = time() . "_" . $file->getClientOriginalName();
+        $file->move($folder_to_save, $file_name);
+        
+        $blog->image = $file_name;
+
+        try{
+            $blog->update();
+            $blogs = Blog::orderby('updated_at', 'desc')->get();
+            if(Auth::user()->role === 'user'){
+                session()->flash('success', 'Successfully Updated');
+                return redirect()->route('dashboard', compact('blogs'));
+            }else{
+                session()->flash('success', 'Successfully Updated');
+                return redirect()->route('admin-dashboard', compact('blogs'));
+            }
+        } catch(Exception $e){
+            $blogs = Blog::orderby('updated_at', 'desc')->get();
+            if(Auth::user()->role === 'user'){
+                return redirect()->route('dashboard', compact('blogs'))->withErrors(['errors', 'Could Not Update']);
+            }else{
+                return redirect()->route('admin-dashboard', compact('blogs'))->withErrors(['errors', 'Could Not Update']);
             }
         }
     }

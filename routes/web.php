@@ -31,5 +31,7 @@ Route::get('/admin-dashboard', [HomeController::class, 'adminDashboard'])->name(
 Route::get('/blogs/delete/{id}', [HomeController::class, 'delete'] )->name('blogs.delete');
 
 Route::get('/blogs/edit/{id}', [HomeController::class, 'edit'] )->name('blogs.edit');
+Route::get('/blogs/edit-admin/{id}', [HomeController::class, 'editAdmin'] )->name('blogs.editAdmin');
 
-Route::post('/contacts/update/{id}', [HomeController::class, 'update'] )->name('blogs.update');
+Route::post('/blogs/update/{id}', [HomeController::class, 'update'] )->name('blogs.update');
+Route::post('/blogs/update-admin/{id}', [HomeController::class, 'updateAdmin'] )->name('blogs.updateAdmin');
