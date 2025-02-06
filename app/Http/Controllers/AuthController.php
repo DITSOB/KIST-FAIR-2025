@@ -23,12 +23,16 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             if(Auth::check() && Auth::user()->role === 'admin'){
+                $user = User::where('email',$credentials["email"])->first();
+                $request->session()->put('username',$user->name);
                 return redirect()->intended('/admin-dashboard');
             }else{
+                $user = User::where('email',$credentials["email"])->first();
+                $request->session()->put('username',$user->name);
                 return redirect()->intended('/dashboard');
             } 
         }
-
+        
         return redirect()->withErrors(['message' => 'Invalid Credentials']);
     }
 

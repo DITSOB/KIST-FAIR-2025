@@ -25,7 +25,7 @@
                 @csrf
                 <div class="content">
                     <div class="details">
-                        <p><i class="bi bi-person-circle"></i>Rohan Sunuwar</p>
+                        <p><i class="bi bi-person-circle"></i>{{ Session::get('username') }}</p>
                     </div>
                 </div>
                 <textarea style="height: 30px; min-height: 30px;" name="title" placeholder="Title Here" required></textarea>
