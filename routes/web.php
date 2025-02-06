@@ -11,10 +11,7 @@ Route::post('/blogs', [HomeController::class, 'postBlog']);
 
 Route::get('/recipes', [HomeController::class, 'recipes'])->name('recipes');
 
-<<<<<<< HEAD
 Route::get('/single-blog/{id}', [HomeController::class, 'singleBlog'])->name('single_blog');
-=======
->>>>>>> 510012c78cfbc6ecfbd74ce1e9612ecf70b14dca
 
 Route::get('/single-recipe/{id}', [HomeController::class, 'singleRecipe'])->name('single_recipe');
 Route::get('/search-recipes', [HomeController::class, 'search'])->name('search-recipes');

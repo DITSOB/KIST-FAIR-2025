@@ -360,6 +360,8 @@ nav ul li:first-child{
 .box{
     max-width: 400px;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .box .search-box{
@@ -387,7 +389,9 @@ nav ul li:first-child{
     height: 100%;
     text-align: center;
     line-height: 30px;
+    border: 1px solid black;
     border-radius: 0 25px 25px 0;
+    /* justify-content: center; */
 }
 
 /* carousel */
