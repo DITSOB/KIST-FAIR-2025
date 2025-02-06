@@ -52,8 +52,22 @@ class HomeController extends Controller
         
     }
 
+    public function getRecipeImage($query)
+{
+    $response = Http::withHeaders([
+        'Authorization' => env('PEXELS_API_KEY')
+    ])->get('https://api.pexels.com/v1/search', [
+        'query' => $query,
+        'per_page' => 1
+    ]);
+
+    $data = $response->json();
+    return $data['photos'][0]['src']['medium'] ?? 'https://via.placeholder.com/300x200?text=No+Image';
+}
+
     public function recipes(){
-        $query = 'pasta'; // Default recipe query
+        $queries = ['pasta', 'chicken', 'dessert', 'soup', 'salad'];
+        $query = $queries[array_rand($queries)];
         $response = Http::withHeaders([
             'X-Api-Key' => env('API_NINJA_KEY'),
         ])->get(env('API_NINJA_URL'), [
@@ -61,7 +75,11 @@ class HomeController extends Controller
         ]);
 
         $recipes = $response->json();
-     //   }
+        
+        foreach ($recipes as &$recipe) {
+            $recipe['image_url'] = $this->getRecipeImage($recipe['title']);
+        }
+
         return view('recipes',compact('recipes'));
     }
 
