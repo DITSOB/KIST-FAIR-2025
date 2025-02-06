@@ -203,4 +203,31 @@ class HomeController extends Controller
         $contacts_tbls->delete();
         return redirect()->back()->with('success', 'Successfully Deleted');
     }
+
+    public function search(Request $request){
+    $query = $request->input('query');
+
+    if (!$query) {
+        return back()->with('error', 'Please enter a search term.');
+    }
+
+    $url = env('API_NINJA_URL') . "?query=" . urlencode($query);
+
+    $response = Http::withHeaders([
+        'X-Api-Key' => env('API_NINJA_KEY')
+    ])->get($url);
+
+    if ($response->failed()) {
+        return back()->with('error', 'Failed to fetch recipes.');
+    }
+
+    $recipes = $response->json();
+
+    foreach ($recipes as &$recipe) {
+        $recipe['image_url'] = $this->getRecipeImage($recipe['title']);
+    }
+    $request->session()->put('search',$query);
+    return view('search-recipes', compact('recipes'));
+}
+
 }

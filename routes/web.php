@@ -11,7 +11,9 @@ Route::post('/blogs', [HomeController::class, 'postBlog']);
 
 Route::get('/recipes', [HomeController::class, 'recipes'])->name('recipes');
 
+
 Route::get('/single-recipe/{id}', [HomeController::class, 'singleRecipe'])->name('single_recipe');
+Route::get('/search-recipes', [HomeController::class, 'search'])->name('search-recipes');
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 

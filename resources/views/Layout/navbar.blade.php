@@ -25,8 +25,12 @@
             <div class="box-container" class="hdieOnMobile">
                 <div class="box">
                 <div class="search-box">
-                    <input type="text" placeholder="Search by recipes, ingredients, etc." style="font-weight: normal; color: grey;">
-                    <label for="" class="icon"><i class="bi bi-search"></i></label>
+                <form action="{{ route('search-recipes') }}" method="GET" class="mb-4">
+                    <input type="text" name="query" placeholder="Search for recipe." style="font-weight: normal; color: grey;" required>
+                    <button for="" type="submit" class="icon"><i class="bi bi-search"></i></button>
+                    </button>
+                </form>
+                    
                 </div>
                 </div>
             </div>

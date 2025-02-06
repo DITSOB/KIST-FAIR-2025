@@ -4,7 +4,7 @@
 <div class="recipe-container">
     
 @if(!empty($recipes))
-    <h1 class="heading">Recipes</h1>
+    <h1 class="heading">{{ Session::get('search')}}</h1>
     <div class="box-container">
         @foreach($recipes as $recipe)
             <div class="box">
