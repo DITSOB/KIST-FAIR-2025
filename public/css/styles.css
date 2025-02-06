@@ -248,6 +248,69 @@ nav ul li:first-child{
     margin-top: 50px;
 }
 
+.card-list .card-item{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.card-list .card-item .card-link{
+    width: 700px;
+    height: 700px;
+    display: block;
+    background: rgb(226, 226, 226);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.12);
+    padding: 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: 0.2s ease;
+}
+
+.card-list .card-item .card-link:hover{
+    border-color: #5372f0;
+}
+
+.card-list .card-link .card-image{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-list .card-link .badge{
+    color: black;
+    padding-top: 8px;
+    font-size: 0.95rem;
+    margin: 16px 0 18px;
+    font-weight: 500;
+    width: fit-content;
+    border-radius: 50px;
+}
+
+.card-list .card-link .card-title{
+    font-size: 1.19rem;
+    color: black;
+    font-weight: 600;
+}
+
+.card-list .card-link .card-button{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 30px 0 5px;
+    color: #5372f0;
+    border: 2px solid #5372f0;
+    background: none;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+
+.card-list .card-link:hover .card-button{
+    color: white;
+    background: #5372f0;
+}
+
 .card{
     width: 325px;
     border-radius: 8px;

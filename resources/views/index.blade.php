@@ -37,6 +37,7 @@
     </div>
 </div> -->
 
+<!-- carousel -->
 <div class="carousel-container">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -71,5 +72,56 @@
 </div>
 
 <!-- updates -->
+<h3 style="text-align: center; margin-top: 20px;">New Uploads</h3>
+<div class="container-card swiper">
+    <div class="wrapper-card">
+        <ul class="card-list swiper-wrapper">
+            @foreach($blogs as $blog)
+            <li class="card-item swiper-slide">
+                <a href="{{ route('single_blog', $blog->id); }}" class="card-link">
+                    <img src="{{ asset('img/' . $blog->image); }}" alt="" class="card-image">
+                    <p class="badge"><i class="bi bi-person"></i>&nbsp;{{ $blog->author }}</p><br>
+                    <p class="badge"><i class="bi bi-clock"></i>&nbsp;Last updated {{ $blog->updated_at->diffForHumans(); }}</p>
+                    <h2 class="card-title">{{ $blog->title }}</h2>
+                    <button class="card-button material-symbols-rounded"><i class="bi bi-arrow-right"></i></button>
+                </a>
+            </li>
+            @endforeach
+        </ul>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+<script>
+    new Swiper('.wrapper-card', {
+    // Optional parameters
+    loop: true,
+    sapceBetween: 30,
+  
+    // If we need pagination
+    pagination: {
+        el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    breakpoints: {
+        0:{
+            slidePerView: 1
+        },
+        768:{
+            slidePerView: 2
+        },
+        1024:{
+            slidePerView: 3
+        },
+    }
+});
+</script>
 
 @endsection

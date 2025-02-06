@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\Blog;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Contracts\Session\Session;
@@ -13,7 +14,8 @@ use Illuminate\Contracts\Session\Session;
 class HomeController extends Controller
 {
     public function index(){
-        return view('index');
+        $blogs = Blog::orderby('updated_at', 'desc')->take(5)->get();
+        return view('index', compact('blogs'));
     }
     
     public function about(){
@@ -65,6 +67,8 @@ class HomeController extends Controller
     }
 
     public function recipes(){
+
+
         $queries = ['pasta', 'chicken', 'dessert', 'soup', 'salad'];
         $query = $queries[array_rand($queries)];
         $response = Http::withHeaders([
@@ -74,19 +78,35 @@ class HomeController extends Controller
         ]);
 
         $recipes = $response->json();
+        // dd($recipes);
         
         foreach ($recipes as &$recipe) {
+
             $recipe['image_url'] = $this->getRecipeImage($recipe['title']);
+
+            // Recipe::create([
+            //     'title' => $recipe['title'],
+            //     'image' => $this->getRecipeImage($recipe['title']),
+            //     'ingredients' => $recipe['ingredients'],
+            //     'instructions' => $recipe['instructions'],
+            //     'servings' => $recipe['servings'],
+            // ]);
         }
+
 
         return view('recipes',compact('recipes'));
     }
 
     public function singleRecipe($id){
+        $recipe = Recipe::find($id);
+        return view('single_recipe', compact('recipe'));
+    }
+
+    public function singleBlog($id){
         $blogs = Blog::find($id);
         //dd($blogs);
         if($blogs){
-             return view('single_recipe', compact('blogs'));
+             return view('single_blog', compact('blogs'));
         }
         return redirect()->back()->withErrors(['message' => 'Item No Longer Exists']);
     }

@@ -10,8 +10,9 @@
             <div class="box">
                 <h3>{{ $recipe['title'] }}</h3>
                 <img src="{{ $recipe['image_url'] }}" alt="{{ $recipe['title'] }}" style="width: 300px; height: 400px; object-fit: cover; border-radius: 10px;">
-                <p class="card-text"><small class="text-muted"><i class="bi bi-person"></i>{{ $recipe['servings'] }}</small></p>
-                <a href="#" class="btn btn-success" style="color: white; text-decoration: none;">Show Recipe</a>
+                <p class="card-text"><small class="text-muted">{{ $recipe['servings'] }}</small></p>
+                <p class="card-text"><small class="text-muted"><h4 style="font-weight: bold; color: black;">Ingredients</h4><br>{!! nl2br(e($recipe['ingredients'])) !!}</small></p>
+                <p class="card-text"><small class="text-muted"><h4>Instructions</h4><br>{!! nl2br(e($recipe['instructions'])) !!}</small></p>
             </div>
         @endforeach
     </div>
