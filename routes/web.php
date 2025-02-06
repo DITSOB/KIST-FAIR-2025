@@ -27,3 +27,9 @@ Route::post('/signup', [AuthController::class, 'register']);
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth')->name('dashboard'); //middleware for authentication
 Route::get('/admin-dashboard', [HomeController::class, 'adminDashboard'])->name('admin-dashboard');
+
+Route::get('/blogs/delete/{id}', [HomeController::class, 'delete'] )->name('blogs.delete');
+
+Route::get('/blogs/edit/{id}', [HomeController::class, 'edit'] )->name('blogs.edit');
+
+Route::post('/contacts/update/{id}', [HomeController::class, 'update'] )->name('blogs.update');

@@ -25,7 +25,7 @@
                 @csrf
                 <div class="content">
                     <div class="details">
-                        <p><i class="bi bi-person-circle"></i>{{ Session::get('username') }}</p>
+                        <p><i class="bi bi-person-circle"></i>{{ Auth::user()->name }}</p>
                     </div>
                 </div>
                 <textarea style="height: 30px; min-height: 30px;" name="title" placeholder="Title Here" required></textarea>
@@ -68,8 +68,8 @@
                 <!-- <p class="card-text">{!! nl2br(e($blog->description)) !!}</p> -->
             </div>
             <div style="display: flex; justify-content: flex-start;">
-                <button type="button" class="btn btn-success" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Edit <i class="bi bi-pencil-fill"></i></button>
-                <button type="button" class="btn btn-danger" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Delete <i class="bi bi-trash-fill"></i></button>
+                <a href="{{ route('blogs.edit', $blog->id); }}"><button type="button" class="btn btn-success" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Edit<i class="bi bi-pencil-fill"></i></button></a>
+                <a href="{{ route('blogs.delete', $blog->id); }}"><button type="button" class="btn btn-danger" style="width: 100px; margin-left:20px; margin-bottom: 5px;">Delete <i class="bi bi-trash-fill"></i></button></a>
             </div>
         </div>
     </div>

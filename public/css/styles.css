@@ -138,6 +138,10 @@ nav ul li:first-child{
     #signup-box{
         height: 100vh;
     }
+
+    .recipe-container{
+        padding: 10px;
+    }
 }
 
 @media(max-width: 400px){
@@ -432,3 +436,44 @@ form .options{
 .card-body a:hover{
     text-decoration: none;
 }
+
+/* recipe container */
+.recipe-container{
+    background: whitesmoke;
+    padding: 15px 9%;
+    padding-bottom: 100px;
+}
+
+.recipe-container .heading{
+    text-align: center;
+    padding-bottom: 15px;
+    color: black;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.recipe-container .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 15px;
+}
+
+.recipe-container .box-container .box{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    background: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.recipe-container .box-container .box img{
+    height: 100px;
+    object-fit: cover;   
+}
+
+.recipe-container .box-container .box h3{
+    color: black;
+    padding: 10px 0;
+}
+
+
