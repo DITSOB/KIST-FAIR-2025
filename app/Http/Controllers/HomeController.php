@@ -51,9 +51,10 @@ class HomeController extends Controller
 
     public function singleRecipe($id){
         $blogs = Blog::find($id);
+        //dd($blogs);
         if($blogs){
             // dd($blogs->title);
-            // return view('single_recipe', compact('blogs'));
+             return view('single_recipe', compact('blogs'));
         }
         // return view('single_recipe', compact('blogs'));
         return redirect()->back()->withErrors(['message' => 'Item No Longer Exists']);
