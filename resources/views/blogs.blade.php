@@ -1,6 +1,18 @@
 @extends('Layout.master')
 @section('content')
 
+<div style="display: flex; justify-content: center; align-items: center;">
+    @if($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
+
 @foreach($blogs as $blog)
     <div class="post-container">
         <div class="card" style="width: 1000px;">

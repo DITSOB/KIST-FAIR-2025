@@ -40,7 +40,7 @@ class HomeController extends Controller
             $blog->save();
             return redirect()->back()->with('success', 'Succesfully Uploaded!');
         } catch(Exception $e){
-            return redirect()->withErrors(['message' => 'Invalid Credentials']);
+            return redirect()->back()->withErrors(['message' => 'Invalid Credentials']);
         }
         
     }
@@ -53,14 +53,14 @@ class HomeController extends Controller
         $blogs = Blog::find($id);
         if($blogs){
             // dd($blogs->title);
-            return view('single_recipe', compact('blogs'));
+            // return view('single_recipe', compact('blogs'));
         }
-        return redirect()->withErrors(['message' => 'Item No Longer Exists']);
+        // return view('single_recipe', compact('blogs'));
+        return redirect()->back()->withErrors(['message' => 'Item No Longer Exists']);
     }
 
     public function dashboard(){
         $blogs = Blog::all();
-
         return view('dashboard', compact('blogs'));
     }
 
