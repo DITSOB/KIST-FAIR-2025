@@ -35,4 +35,22 @@
     </div>
 </div>
 
+@if(!empty($recipes))
+    <h1>Popular Recipes</h1>
+    <ul>
+        @foreach($recipes as $recipe)
+            <li>
+                
+                <h2>{{ $recipe['title'] }}</h2>
+                <p>{{ $recipe['ingredients'] }}</p>
+                <p>{{ $recipe['servings'] }}</p>
+                <p><strong>Instructions:</strong> {{ $recipe['instructions'] }}</p>
+            </li>
+        @endforeach
+    </ul>
+@else
+    <p>No recipes found.</p>
+@endif
+
+
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Exception;
@@ -51,17 +53,24 @@ class HomeController extends Controller
     }
 
     public function recipes(){
-        return view('recipes');
+        $query = 'pasta'; // Default recipe query
+        $response = Http::withHeaders([
+            'X-Api-Key' => env('API_NINJA_KEY'),
+        ])->get(env('API_NINJA_URL'), [
+            'query' => $query,
+        ]);
+
+        $recipes = $response->json();
+     //   }
+        return view('recipes',compact('recipes'));
     }
 
     public function singleRecipe($id){
         $blogs = Blog::find($id);
         //dd($blogs);
         if($blogs){
-            // dd($blogs->title);
              return view('single_recipe', compact('blogs'));
         }
-        // return view('single_recipe', compact('blogs'));
         return redirect()->back()->withErrors(['message' => 'Item No Longer Exists']);
     }
 
