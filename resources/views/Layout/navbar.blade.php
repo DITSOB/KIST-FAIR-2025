@@ -11,7 +11,7 @@
         </ul>
         <ul>
             <li><a href="{{ route('index'); }}">Tasty Tidbits</a></li>
-            <div class="box-container">
+            <div class="box-container" class="hdieOnMobile">
                 <div class="box">
                 <div class="search-box">
                     <input type="text" placeholder="Search by recipes, ingredients, etc.">

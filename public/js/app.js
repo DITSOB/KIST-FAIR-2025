@@ -25,4 +25,12 @@ function hideSidebar(){
 
 $('.carousel').carousel({
     interval: 2000
-  })
+})
+
+// image upload
+// const selectImage = document.querySelector('.options');
+// const inputImage = document.querySelectorAll('#file');
+
+// selectImage.addEventListener('click', function(){
+//     inputImage.click();
+// });

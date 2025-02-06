@@ -395,3 +395,22 @@ form .options{
     justify-content: space-between;
     cursor: pointer;
 }
+
+.post form .submit{
+    color: #bcc0c4;
+    height: 53px;
+    cursor: no-drop;
+    font-size: 18px;
+    font-weight: 500px;
+    border-radius: 7px;
+}
+
+.post form textarea:valid ~ .submit{
+    color: #ffffff;
+    cursor: pointer;
+    background: #4599ff;
+}
+
+.card-body a:hover{
+    text-decoration: none;
+}
