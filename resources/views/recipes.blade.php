@@ -13,6 +13,7 @@
                 <p class="card-text"><small class="text-muted"><i class="bi bi-person"></i>{{ $recipe['servings'] }}</small></p>
                 <!-- <p class="card-text"><small class="text-muted"><h4 style="font-weight: bold; color: black;">Ingredients</h4><br>{!! nl2br(e($recipe['ingredients'])) !!}</small></p>
                 <p class="card-text"><small class="text-muted"><h4>Instructions</h4><br>{!! nl2br(e($recipe['instructions'])) !!}</small></p> -->
+                <a href="#" class="btn btn-success" style="color: white; text-decoration: none;">View Recipe</a>
             </div>
         @endforeach
     </div>
