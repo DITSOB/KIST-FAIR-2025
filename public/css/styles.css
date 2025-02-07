@@ -357,6 +357,13 @@ nav ul li:first-child{
     justify-content: center;
 }
 
+.box1{
+    max-width: 400px;
+    width: 100%;
+    /* display: flex; */
+    justify-content: center;
+}
+
 .box{
     max-width: 400px;
     width: 100%;
@@ -543,4 +550,21 @@ form .options{
     padding: 10px 0;
 }
 
+.recipe-container .box-container .box1{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    background: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.recipe-container .box-container .box1 img{
+    height: 100px;
+    object-fit: cover;   
+}
+
+.recipe-container .box-container .box1 h3{
+    color: black;
+    padding: 10px 0;
+}
 
